@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 
 import LoginForm from './login-form';
+import RegistrationForm from './registration-form';
 
 import './style/landing-page.css';
 
@@ -26,7 +27,7 @@ export class LandingPage extends React.Component{
         <h2>Welcome to Babble Tower!</h2>
         <p>Ever wanted to learn a new language? Now you can! Babble Tower allows you to learn new languages with easy-to-use flashcard exercises! To get started, please login or register below!</p>
         {/* <LoginForm /> */}
-        {/* <Link to="/register">Register</Link> */}
+        {/* <RegistrationForm /> */}
       </div>
     );
   }
