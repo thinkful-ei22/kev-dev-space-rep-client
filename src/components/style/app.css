@@ -1,0 +1,9 @@
+body{
+  background: #D3BC9D;
+}
+
+.app{
+  text-align: center;
+  margin: auto;
+  max-width: 600px;
+}
