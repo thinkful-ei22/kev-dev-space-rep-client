@@ -3,7 +3,14 @@ import {SubmissionError} from 'redux-form';
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
 
+export const REGISTER_ERROR = 'REGISTER_ERROR';
+const registerErr = err => ({
+  type: REGISTER_ERROR,
+  err
+});
+
 export const registerUser = user => dispatch => {
+  console.log('Im making a create user call to the backend');
   return fetch(`${API_BASE_URL}/users`, {
     method: 'POST',
     headers: {
@@ -15,6 +22,7 @@ export const registerUser = user => dispatch => {
     .then(res => res.json())
     .catch(err => {
       const {reason, message, location} = err;
+      dispatch(registerErr(message));
       if (reason === 'ValidationError') {
         // Convert ValidationErrors into SubmissionErrors for Redux Form
         return Promise.reject(

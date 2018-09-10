@@ -26,20 +26,22 @@ export class LandingPage extends React.Component{
       <div className="form-container">
         {this.state.isLoginShowing
           ? 
-            [<LoginForm key="form"/>,
+          [<LoginForm key="form"/>,
             <p key="swap">Want to register? 
               <button onClick={()=>
                 this.setState({isLoginShowing: !this.state.isLoginShowing}
-              )}>Click Here</button>
+                )}>Click Here</button>
             </p>]
           : 
-            [<RegistrationForm key="form"/>,
-            <p key="swap">Want to login?
-              <button onClick={()=>
-                this.setState({isLoginShowing: !this.state.isLoginShowing}
+          [<RegistrationForm key="form"
+            regSuccess={() => this.setState({isLoginShowing: true})}
+          />,<p key='p'>{this.props.err}</p>,
+          <p key="swap">Want to login?
+            <button onClick={()=>
+              this.setState({isLoginShowing: !this.state.isLoginShowing}
               )}>Click Here</button>
-            </p>]
-          }
+          </p>]
+        }
       </div>
     );
 
@@ -56,7 +58,8 @@ export class LandingPage extends React.Component{
 }
 
 const mapStateToProps = state => ({
-  loggedIn: state.auth.currentUser !== null
+  loggedIn: state.auth.currentUser !== null,
+  err: state.user.error
 });
 
 export default connect(mapStateToProps)(LandingPage);
