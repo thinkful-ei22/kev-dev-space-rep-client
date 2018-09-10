@@ -26,7 +26,7 @@ export class LandingPage extends React.Component{
       <div className="home">
         <h2>Welcome to Babble Tower!</h2>
         <p>Ever wanted to learn a new language? Now you can! Babble Tower allows you to learn new languages with easy-to-use flashcard exercises! To get started, please login or register below!</p>
-        {/* <LoginForm /> */}
+        <LoginForm />
         {/* <RegistrationForm /> */}
       </div>
     );
