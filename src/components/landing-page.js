@@ -15,7 +15,7 @@ export class LandingPage extends React.Component{
   }
 
   render(){
-      // If we are logged in redirect straight to the user's dashboard
+    // If we are logged in redirect straight to the user's dashboard
       
     if (this.loggedIn) {
       return <Redirect to="/dashboard" />;
@@ -29,7 +29,7 @@ export class LandingPage extends React.Component{
         {/* <Link to="/register">Register</Link> */}
       </div>
     );
-}
+  }
 
 }
 
