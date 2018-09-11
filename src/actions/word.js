@@ -18,8 +18,9 @@ const wordValidate = answer => ({
 });
 
 export const fetchWord = () => dispatch => {
+  console.log('Im making a fetch word call to the backend');
   dispatch(wordRequest());
-  return fetch(`${API_BASE_URL}/api/words/random`)
+  return fetch(`${API_BASE_URL}/words/random`)
     .then(res => {
       console.log(res);
       return res.json();
@@ -33,7 +34,7 @@ export const fetchWord = () => dispatch => {
 
 export const answerWord = wordId => dispatch => {
   dispatch(wordRequest());
-  return fetch(`${API_BASE_URL}/api/words/${wordId}`)
+  return fetch(`${API_BASE_URL}/words/${wordId}`)
     .then(res => {
       console.log(res);
       return res.json();

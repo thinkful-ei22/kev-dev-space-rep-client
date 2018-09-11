@@ -2,34 +2,129 @@ import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 import {fetchProtectedData} from '../actions/protected-data';
+import {fetchWord, answerWord} from '../actions/word';
 
 export class Dashboard extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(fetchProtectedData());
+  constructor(props){
+    super(props);
+    this.state = {
+      localAns: null,
+      toggleBox: false
+    };
   }
 
-  render() {
-    return (
-      <div className="dashboard">
-        <div className="dashboard-username">
-                    Username: {this.props.username}
+  componentWillMount() {
+    this.props.dispatch(fetchWord());
+  }
+
+  validateAnswer(){
+    if(this.state.localAns && this.props.word){
+      const arr = this.props.answer.translation.filter(
+        item => item.toLowerCase() === this.state.localAns);
+      
+      if(arr.length){
+        return(
+          <div>
+            <p>You answered correctly! 
+            Other answers include: {this.props.answer.translation}</p>
+            {this.nextButton()}
+          </div>
+        );
+      }
+      else {
+        return(
+          <div>
+            <p>Your answer was incorrect. 
+            Answer: {this.props.answer.translation.join(',')}</p>
+            {this.nextButton()}
+          </div>
+        );
+      }
+    }
+    else {
+      return(
+        <div>
         </div>
-        <div className="dashboard-name">Name: {this.props.name}</div>
-        <div className="dashboard-protected-data">
-                    Protected data: {this.props.protectedData}
-        </div>
+      );
+    }
+  }
+
+  nextButton(){
+    return(
+      <div>
+        <input
+          onClick={() => {
+            this.setState({localAns: null, toggleBox: false});
+            this.props.dispatch(fetchWord());
+          }}
+          type='submit'
+          className='nextWordButton'
+          name='nextWordButton'
+          value='Next'>
+        </input>
       </div>
     );
   }
+
+
+  render() {
+    const toggleInputBox = this.state.toggleBox ? 'none' : 'block';
+    if(!this.props.loading){
+      return (
+        <div className="dashboard">
+          <div className="dashboard-username">
+                    Username: {this.props.username}
+          </div>
+          <div className="dashboard-name">Name: {this.props.name}</div>
+
+          <h1>Your word is...</h1>
+          <h2>{this.props.word.untranslated}</h2>
+          <h3>({this.props.word.phonetic})</h3>
+          <form 
+            className='answerForm'
+            style={{display: `${toggleInputBox}` }}
+            onSubmit={e => {
+              e.preventDefault();
+              this.setState({
+                localAns: e.target.answer.value.toLowerCase(),
+                toggleBox: true
+              });
+              this.props.dispatch(answerWord(this.props.word.id));
+            }}>
+            <input 
+              type='text'
+              id='answerBox'
+              name='answer'
+              placeholder='Enter in an answer'
+            />
+            <input 
+              type='submit' 
+              id='answerButton' 
+              className='answerButton' 
+              name='button' 
+              value='Submit'
+            />
+          </form>
+          {this.validateAnswer()}
+        </div>);
+    }
+    else if(this.props.loading === true){
+      return(
+        <div>
+          <p>LOADING....</p>
+        </div>
+      );
+    }
+  }
 }
 
-const mapStateToProps = state => {
-  const {currentUser} = state.auth;
-  return {
-    username: state.auth.currentUser.username,
-    name: `${currentUser.firstName} ${currentUser.lastName}`,
-    protectedData: state.protectedData.data
-  };
-};
+const mapStateToProps = state => ({
+  username: state.auth.currentUser.username,
+  name: state.auth.name,
+  protectedData: state.protectedData.data,
+  word: state.word.word,
+  answer: state.word.ans,
+  loading: state.word.loading
+});
 
 export default requiresLogin()(connect(mapStateToProps)(Dashboard));

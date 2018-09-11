@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   word: null,
-  loading: false,
+  loading: true,
   error: null,
   ans: null,
 };
@@ -18,10 +18,12 @@ export default function wordReducer (state=initialState, action){
       error: null
     });
   } else if(action.type === WORD_SUCCESS){
+    console.log(action.word);
     return Object.assign({}, state, {
       word: action.word,
       loading: false,
-      error: null
+      error: null,
+      ans: null
     });
   } else if(action.type === WORD_VALID){
     return Object.assign({}, state, {
