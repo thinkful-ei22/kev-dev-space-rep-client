@@ -22,24 +22,17 @@ export class Dashboard extends React.Component {
       const arr = this.props.answer.translation.filter(
         item => item.toLowerCase() === this.state.localAns);
       
-      if(arr.length){
-        return(
-          <div>
-            <p>You answered correctly! 
-            Other answers include: {this.props.answer.translation}</p>
-            {this.nextButton()}
-          </div>
-        );
-      }
-      else {
-        return(
-          <div>
-            <p>Your answer was incorrect. 
-            Answer: {this.props.answer.translation.join(',')}</p>
-            {this.nextButton()}
-          </div>
-        );
-      }
+      const feedback = arr.length > 0 ? 'Correct!' : 'Incorrect. Try another!' ;
+    
+      return(
+        <div>
+          <p>{feedback}</p>
+          <p>This word translates to: {this.props.answer.translation.join(' / ')}.</p>
+          {arr.length > 0 ? '' : 'Your answer was: ' + this.state.localAns}
+          {this.nextButton()}
+        </div>
+      );
+      
     }
     else {
       return(
