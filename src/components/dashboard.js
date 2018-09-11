@@ -113,7 +113,7 @@ export class Dashboard extends React.Component {
 
 const mapStateToProps = state => ({
   username: state.auth.currentUser.username,
-  name: state.auth.name,
+  name: state.auth.currentUser.name,
   protectedData: state.protectedData.data,
   word: state.word.word,
   answer: state.word.ans,
