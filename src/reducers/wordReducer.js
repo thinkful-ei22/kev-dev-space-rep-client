@@ -1,14 +1,15 @@
 import {
   WORD_REQUEST,
   WORD_SUCCESS,
-  WORD_VALID,
+  WORD_VALIDATION,
 } from '../actions/word';
 
 const initialState = {
   word: null,
   loading: true,
   error: null,
-  ans: null,
+  isCorrect: null,
+  answer: null,
 };
 
 export default function wordReducer (state=initialState, action){
@@ -23,11 +24,12 @@ export default function wordReducer (state=initialState, action){
       word: action.word,
       loading: false,
       error: null,
-      ans: null
+      answer: null
     });
-  } else if(action.type === WORD_VALID){
+  } else if(action.type === WORD_VALIDATION){
     return Object.assign({}, state, {
-      ans: action.answer,
+      isCorrect: action.isCorrect,
+      answer: action.answer,
       loading: false,
       error: null
     });

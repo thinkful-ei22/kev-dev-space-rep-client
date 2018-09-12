@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
-import {fetchProtectedData} from '../actions/protected-data';
+// import {fetchProtectedData} from '../actions/protected-data';
 import {fetchWord, answerWord} from '../actions/word';
 
 export class Dashboard extends React.Component {
@@ -19,16 +19,14 @@ export class Dashboard extends React.Component {
 
   validateAnswer(){
     if(this.state.localAns && this.props.word){
-      const arr = this.props.answer.translation.filter(
-        item => item.toLowerCase() === this.state.localAns);
-      
-      const feedback = arr.length > 0 ? 'Correct!' : 'Incorrect. Try another!' ;
+     
+      const feedback = this.props.isCorrect ? 'Correct!' : 'Incorrect. Try another!' ;
     
       return(
         <div>
           <p>{feedback}</p>
-          <p>This word translates to: {this.props.answer.translation.join(' / ')}.</p>
-          {arr.length > 0 ? '' : 'Your answer was: ' + this.state.localAns}
+          <p>This word translates to: {this.props.answer.join(' / ')}.</p>
+          {this.props.isCorrect ? '' : 'Your answer was: ' + this.state.localAns}
           {this.nextButton()}
         </div>
       );
@@ -79,10 +77,10 @@ export class Dashboard extends React.Component {
             onSubmit={e => {
               e.preventDefault();
               this.setState({
-                localAns: e.target.answer.value.toLowerCase(),
+                localAns: e.target.answer.value,
                 toggleBox: true
               });
-              this.props.dispatch(answerWord(this.props.word.id));
+              this.props.dispatch(answerWord(this.props.word.wordId, e.target.answer.value));
             }}>
             <input 
               type='text'
@@ -116,8 +114,9 @@ const mapStateToProps = state => ({
   name: state.auth.currentUser.name,
   protectedData: state.protectedData.data,
   word: state.word.word,
-  answer: state.word.ans,
-  loading: state.word.loading
+  answer: state.word.answer,
+  loading: state.word.loading,
+  isCorrect: state.word.isCorrect,
 });
 
 export default requiresLogin()(connect(mapStateToProps)(Dashboard));
