@@ -17,7 +17,7 @@ export class Logout extends React.Component{
   render(){
     const message = this.props.loggedIn || this.props.hasAuthToken
       ? <p>Logging out...</p>
-      : <p>Logged out. Thank you for using Babble Tower!</p>;
+      : <p>Logged out. Thank you for using --SITENAME--!</p>;
 
     return(
       <div className="content-box">
