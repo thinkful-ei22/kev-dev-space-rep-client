@@ -9,8 +9,41 @@ const registerErr = err => ({
   err
 });
 
+export const FETCH_HISTORY_REQUEST = 'FETCH_HISTORY_REQUEST';
+const fetchHistoryRequest = () => ({
+  type: FETCH_HISTORY_REQUEST
+});
+
+export const FETCH_HISTORY_SUCCESS = 'FETCH_HISTORY_SUCCESS';
+const fetchHistorySuccess = history => ({
+  type: FETCH_HISTORY_SUCCESS,
+  history
+});
+
+export const fetchProgress = () => (dispatch, getState) => {
+  dispatch(fetchHistoryRequest());
+
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/progress/history`, {
+      method: 'GET',
+      headers: {
+        // Provide our existing token as credentials to get a new one
+        Authorization: `Bearer ${authToken}`
+      }
+    })
+    .then(res =>{
+      return res.json();
+    })
+    .then(res =>{
+      dispatch(fetchHistorySuccess(res));
+    })
+    .catch(err =>{
+      //TODO: more here
+      console.error('Could not fetch user progress');
+    });
+};
+
 export const registerUser = user => dispatch => {
-  console.log('Im making a create user call to the backend');
   return fetch(`${API_BASE_URL}/users`, {
     method: 'POST',
     headers: {
