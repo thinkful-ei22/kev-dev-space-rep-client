@@ -24,31 +24,17 @@ export class LandingPage extends React.Component{
 
     const currentForm = (
       <div className="form-container">
-        {this.state.isLoginShowing
-          ? 
-          [<LoginForm key="form"/>,
-            <p key="swap">Want to register? 
-              <button onClick={()=>
-                this.setState({isLoginShowing: !this.state.isLoginShowing}
-                )}>Click Here</button>
-            </p>]
-          : 
-          [<RegistrationForm key="form"
-            regSuccess={() => this.setState({isLoginShowing: true})}
-          />,<p key='p'>{this.props.err}</p>,
-          <p key="swap">Want to login?
-            <button onClick={()=>
-              this.setState({isLoginShowing: !this.state.isLoginShowing}
-              )}>Click Here</button>
-          </p>]
-        }
+        <RegistrationForm key="form"
+          regSuccess={() => this.setState({isLoginShowing: true})}
+        />
+        <p>{this.props.err}</p>,
       </div>
     );
 
     return (
       <div className="home">
-        <h2>Welcome to Babble Tower!</h2>
-        <p>Ever wanted to learn a new language? Now you can! Babble Tower allows you to learn new languages with easy-to-use flashcard exercises! To get started, please login or register below!</p>
+        <h2>Welcome to --SITENAME--!</h2>
+        <p>Ever wanted to learn Japanese? Now you can! --SITENAME-- allows you to learn new languages with easy-to-use flashcard exercises! To get started, please login or register below!</p>
         
         {currentForm}
       </div>
