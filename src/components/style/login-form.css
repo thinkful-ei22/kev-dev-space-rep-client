@@ -1,0 +1,27 @@
+.login-form{
+  display: inline-flex;
+  padding: 0px;
+}
+
+.login-form-e{
+  display: inline-flex;
+  align-self: flex-end;
+  padding: 0px;
+}
+
+.login-form-e label{
+  padding: 0;
+}
+
+.login-form-e *{
+  align-self: flex-end;
+}
+
+/* .form-input{
+  display: flex;
+}
+
+.form-input *{
+  display: inline-block;
+  align-self: center;
+} */

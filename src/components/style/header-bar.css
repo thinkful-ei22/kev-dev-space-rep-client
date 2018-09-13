@@ -1,4 +1,4 @@
-.web-h1-title {
+.site-title {
   font-size: 30px;
   text-align: center;
   margin-top: 0px;
@@ -10,14 +10,27 @@
 }
 
 .homeNav {
-  color: white;
-  background-color: black;
-  display: inline-block;
   padding: 8px;
 }
 
 .nav-box {
   display: flex;
-  align-items: baseline;
-  border-bottom: 20px solid black;
+  justify-content: center;
+  background: black;
+  padding: 5px;
+}
+
+.nav-box-element{
+  background-color: black;
+  color: white;
+  display: inline-block;
+  align-self: flex-end;
+  margin: 0 10px;
+}
+
+.nav-box-element a:link,
+.nav-box-element a:visited,
+.nav-box-element a:hover,
+.nav-box-element a:active{
+  color: white;
 }
