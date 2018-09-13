@@ -25,12 +25,12 @@ export const fetchProgress = () => (dispatch, getState) => {
 
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/progress/history`, {
-      method: 'GET',
-      headers: {
-        // Provide our existing token as credentials to get a new one
-        Authorization: `Bearer ${authToken}`
-      }
-    })
+    method: 'GET',
+    headers: {
+      // Provide our existing token as credentials to get a new one
+      Authorization: `Bearer ${authToken}`
+    }
+  })
     .then(res =>{
       return res.json();
     })

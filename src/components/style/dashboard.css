@@ -1,6 +1,24 @@
 .dashboard{
+  /* display: flex; */
   background: white;
   /* border-top: 20px solid black; */
   max-width: 1400px;
   margin: auto;
+  overflow: auto;
+}
+
+.float-left{
+  width: 44%;
+  background: white;
+  /* border-top: 20px solid black; */
+  text-align: left;
+  /* display: inline-grid; */
+  padding: 20px;
+}
+
+.float-right{
+  width: 92%;
+  background: white;
+  /* border-top: 20px solid black; */
+  text-align: right;
 }

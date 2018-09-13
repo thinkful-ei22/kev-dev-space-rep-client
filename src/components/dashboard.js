@@ -6,29 +6,43 @@ import {fetchProgress} from '../actions/users';
 import './style/dashboard.css';
 
 export class Dashboard extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      localAns: null,
-      toggleBox: false
-    };
-  }
-
   componentWillMount() {
     this.props.dispatch(fetchProgress());
   }
-
+  
+  populate(){
+    return this.props.history.map(i =>{
+      console.log(i);
+      return (<div className='float-right'>
+        <h3>{i.untranslated} - {i.phonetic}</h3>
+        <p>Number of times correct: {i.correct} and incorrect {i.incorrect}.</p>
+      </div>);
+    });
+  }
 
   render() {
-    const toggleInputBox = this.state.toggleBox ? 'none' : 'block';
     if(!this.props.loading){
       return (
-        <p>Loaded!</p>
+        <div className='dashboard'>
+          <div className='float-left'>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              Morbi rhoncus orci id sem varius, sit amet pulvinar magna 
+              vehicula. Nunc in molestie nisi, non euismod nibh. Nullam 
+              gravida ex sed congue euismod. Integer ante ex, eleifend 
+              sit amet consectetur vitae, aliquam porta sem. Curabitur 
+              ultrices vehicula quam, ac luctus libero tincidunt ut. 
+              Aliquam aliquet mollis felis, volutpat euismod dolor.
+            </p>
+          </div>
+          <div className='float-right'>
+            {this.populate()}
+          </div>
+        </div>
       );
     }
     else{
       return(
-        <div>
+        <div className='dashboard'>
           <p>LOADING....</p>
         </div>
       );
