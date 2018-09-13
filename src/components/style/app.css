@@ -1,6 +1,7 @@
 body{
   background: white;
   height: 100%;
+  width: 100%;
 }
 
 
@@ -10,14 +11,16 @@ body{
   text-align: center;
   margin: auto;
   /* border-top: 3px solid black; */
-  border-bottom: 3px solid black;
+  /* border-bottom: 3px solid black; */
   font-family: 'Julius Sans One', sans-serif;
   height: 100%;
+  width: 100%;
 
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  position: absolute;
 }
 
 p {
