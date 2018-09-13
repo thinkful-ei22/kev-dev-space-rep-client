@@ -34,8 +34,7 @@ export class Dashboard extends React.Component {
     }
     else {
       return(
-        <div>
-        </div>
+        <div></div>
       );
     }
   }
