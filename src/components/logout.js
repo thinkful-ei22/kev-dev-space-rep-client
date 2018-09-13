@@ -9,8 +9,13 @@ export class Logout extends React.Component{
     this.props.dispatch(logout());
   }
 
+  componentDidUpdate(prevProps){
+    if(this.props.loggedIn || this.props.hasAuthToken)
+      this.props.dispatch(logout());
+  }
+  
   render(){
-    const message = this.props.loggedIn
+    const message = this.props.loggedIn || this.props.hasAuthToken
       ? <p>Logging out...</p>
       : <p>Logged out. Thank you for using Babble Tower!</p>;
 
@@ -19,13 +24,11 @@ export class Logout extends React.Component{
         {message}
       </div>
     );
-
   }
-
-  
 }
 
 const mapStateToProps = state => ({
+  auth: state.auth,
   hasAuthToken: state.auth.authToken !== null,
   loggedIn: state.auth.currentUser !== null
 });
