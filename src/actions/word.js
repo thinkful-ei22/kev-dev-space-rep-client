@@ -18,9 +18,26 @@ const wordValidate = (isCorrect, answer) => ({
   answer
 });
 
+export const resetProgress = () => (dispatch, getState) =>{
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/progress/reset`,
+  {
+    method: 'PUT',
+    headers: {
+      // Provide our auth token as credentials
+      'content-type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+  .then(() =>{
+    dispatch(wordRequest());
+    dispatch(fetchWord());
+  });
+
+};
+
 export const fetchWord = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-  console.log('Im making a fetch word call to the backend');
   dispatch(wordRequest());
   return fetch(`${API_BASE_URL}/progress/next`,
     {

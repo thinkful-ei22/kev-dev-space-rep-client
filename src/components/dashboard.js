@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 // import {fetchProtectedData} from '../actions/protected-data';
-import {fetchWord, answerWord} from '../actions/word';
+import {fetchWord, answerWord, resetProgress} from '../actions/word';
 
 export class Dashboard extends React.Component {
   constructor(props){
@@ -56,6 +56,13 @@ export class Dashboard extends React.Component {
     );
   }
 
+  resetButton(){
+    return (
+      <button onClick={()=>this.props.dispatch(resetProgress())}>
+        Reset Progress
+      </button>
+    );
+  }
 
   render() {
     const toggleInputBox = this.state.toggleBox ? 'none' : 'block';
@@ -96,6 +103,9 @@ export class Dashboard extends React.Component {
             />
           </form>
           {this.validateAnswer()}
+          <br/>
+          <br/>
+          {this.resetButton()}
         </div>);
     }
     else if(this.props.loading === true){
