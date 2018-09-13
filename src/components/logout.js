@@ -20,7 +20,10 @@ export class Logout extends React.Component{
       : <p>Logged out. Thank you for using Babble Tower!</p>;
 
     return(
-      <div className="content-box">
+      <div className="logoutBox" style={{background: 'white',
+        /* border-top: 20px solid black; */
+        maxWidth: '1200px',
+        margin: 'auto'}}>
         {message}
       </div>
     );

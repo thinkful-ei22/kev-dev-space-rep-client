@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 // import {fetchProtectedData} from '../actions/protected-data';
 import {fetchWord, answerWord, resetProgress} from '../actions/word';
+import './style/learn.css';
 
 export class Learn extends React.Component {
   constructor(props){
@@ -68,13 +69,8 @@ export class Learn extends React.Component {
     const toggleInputBox = this.state.toggleBox ? 'none' : 'block';
     if(!this.props.loading){
       return (
-        <div className="dashboard">
+        <div className='learnBox'>
           <h2>LEARN</h2>
-          <div className="dashboard-username">
-                    Username: {this.props.username}
-          </div>
-          <div className="dashboard-name">Name: {this.props.name}</div>
-
           <h1>Your word is...</h1>
           <h2>{this.props.word.untranslated}</h2>
           <h3>({this.props.word.phonetic})</h3>

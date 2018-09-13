@@ -14,4 +14,5 @@
   background-color: black;
   display: inline-block;
   padding: 8px;
+  border-bottom: 20px solid black;
 }
