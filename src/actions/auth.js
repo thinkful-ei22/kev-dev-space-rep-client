@@ -48,9 +48,9 @@ export const logout = () => dispatch => {
 // the user data stored in the token
 const storeAuthInfo = (authToken, dispatch) => {
   const decodedToken = jwtDecode(authToken);
+  saveAuthToken(authToken);
   dispatch(setAuthToken(authToken));
   dispatch(authSuccess(decodedToken.user));
-  saveAuthToken(authToken);
 };
 
 export const login = (username, password) => dispatch => {
@@ -93,6 +93,7 @@ export const login = (username, password) => dispatch => {
 export const refreshAuthToken = () => (dispatch, getState) => {
   dispatch(authRequest());
   const authToken = getState().auth.authToken;
+  
   return fetch(`${API_BASE_URL}/auth/refresh`, {
     method: 'POST',
     headers: {

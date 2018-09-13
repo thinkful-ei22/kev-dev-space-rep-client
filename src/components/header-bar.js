@@ -21,7 +21,7 @@ export class HeaderBar extends React.Component {
         <a href="/learn">Learn</a>
       );
       progressButton = (
-        <a href="/progress">Progress</a>
+        <a href="/dashboard">Dashboard</a>
       );
       logOutButton = (
         <a href="/logout">Logout</a>
@@ -36,8 +36,8 @@ export class HeaderBar extends React.Component {
         <a 
           className='homeNav'
           href="/">Home</a>
-        {/* {learnButton}
-        {progressButton} */}
+        {learnButton}
+        {progressButton}
         {logOutButton}
       </div>
     );
