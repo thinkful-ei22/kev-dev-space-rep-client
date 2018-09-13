@@ -36,14 +36,14 @@ export class RegistrationForm extends React.Component {
         <Field
           component={Input}
           type="text"
-          name="username"
+          name="usernameRegister"
           validate={[required, nonEmpty, isTrimmed]}
         />
         <label htmlFor="password">Password</label>
         <Field
           component={Input}
           type="password"
-          name="password"
+          name="passwordRegister"
           validate={[required, passwordLength, isTrimmed]}
         />
         <label htmlFor="passwordConfirm">Confirm password</label>

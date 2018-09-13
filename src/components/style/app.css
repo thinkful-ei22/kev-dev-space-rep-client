@@ -2,12 +2,16 @@ body{
   background: white;
   height: 100%;
   width: 100%;
+  background-image: 
+  url('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cherry-blossoms-trivia-facts-1519937792.jpg');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: inherit;
 }
 
 
 .app{
-  background-image: 
-  url('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cherry-blossoms-trivia-facts-1519937792.jpg');
+  
   text-align: center;
   margin: auto;
   /* border-top: 3px solid black; */
@@ -15,12 +19,9 @@ body{
   font-family: 'Julius Sans One', sans-serif;
   height: 100%;
   width: 100%;
-
+  
   /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute;
+  
 }
 
 p {

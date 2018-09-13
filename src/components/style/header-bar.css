@@ -1,4 +1,4 @@
-.webTitle {
+.web-h1-title {
   font-size: 30px;
   text-align: center;
   margin-top: 0px;
@@ -14,5 +14,10 @@
   background-color: black;
   display: inline-block;
   padding: 8px;
+}
+
+.nav-box {
+  display: flex;
+  align-items: baseline;
   border-bottom: 20px solid black;
 }
