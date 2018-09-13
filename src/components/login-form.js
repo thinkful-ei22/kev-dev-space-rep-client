@@ -7,7 +7,7 @@ import './style/login.css';
 
 export class LoginForm extends React.Component {
   onSubmit(values) {
-    return this.props.dispatch(login(values.username, values.password));
+    return this.props.dispatch(login(values.usernameLogin, values.passwordLogin));
   }
 
   render() {
@@ -50,10 +50,7 @@ export class LoginForm extends React.Component {
             validate={[required, nonEmpty]}
           />
         </div>
-        <div className='login-form-e'>
-          <button disabled={this.props.pristine 
-          || this.props.submitting}>Log in</button>
-        </div>
+        <button disabled={this.props.pristine || this.props.submitting}>Log in</button>
       </form>
     );
   }

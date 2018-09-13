@@ -29,9 +29,8 @@ export class HeaderBar extends React.Component {
     return (
       <div className="header-bar">
         <div className='titleBox'>
-          <h1 className='web-h1-title'>--SITENAME--</h1>
+          <h1 className='web-h1-Title'>--SITENAME--</h1>
         </div>
-        <br/>
         <nav className='nav-box'>
           <div className="mainNav">
             {navButtons}
