@@ -1,6 +1,6 @@
 .home{
-  background: #F9ECDB;
-  border: 1px solid #756755;
-  border-radius: 4px;
-
+  background: white;
+  border-top: 20px solid black;
+  max-width: 1200px;
+  margin: auto;
 }

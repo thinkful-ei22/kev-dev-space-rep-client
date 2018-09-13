@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
 import {Redirect} from 'react-router-dom';
+import './style/header-bar.css';
 
 export class HeaderBar extends React.Component {
   // logOut() {
@@ -28,8 +29,13 @@ export class HeaderBar extends React.Component {
     }
     return (
       <div className="header-bar">
-        <h1>Babble Tower</h1>
-        <a href="/">Home</a>
+        <div className='titleBox'>
+          <h1 className='webTitle'>Babble Tower</h1>
+        </div>
+        <br/>
+        <a 
+          className='homeNav'
+          href="/">Home</a>
         {/* {learnButton}
         {progressButton} */}
         {logOutButton}
