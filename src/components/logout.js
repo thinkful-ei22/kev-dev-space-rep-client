@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {
   logout
 } from '../actions/auth';
-
+import {withRouter} from 'react-router-dom';
 import './style/logout.css';
 
 export class Logout extends React.Component{
@@ -15,12 +15,25 @@ export class Logout extends React.Component{
     if(this.props.loggedIn || this.props.hasAuthToken)
       this.props.dispatch(logout());
   }
+
+  setTimeoutLogout(){
+    return(
+      <div>
+        
+      </div>
+    );
+
+  }
   
   render(){
-    const message = this.props.loggedIn || this.props.hasAuthToken
-      ? <p>Logging out...</p>
-      : <p>Logged out. Thank you for using Sakura Learning!</p>;
-
+    let message = '';
+    if(this.props.loggedIn || this.props.hasAuthToken){
+      message = <p>Logging out...</p>;
+    }
+    else{
+      message = <p>Logged out. Thank you for using Sakura Learning!</p>;
+      window.setTimeout(() => this.props.history.push('/'), 3000);
+    }
     return(
       <div className="logout-box">
         {message}
@@ -35,4 +48,4 @@ const mapStateToProps = state => ({
   loggedIn: state.auth.currentUser !== null
 });
 
-export default connect(mapStateToProps)(Logout);
+export default withRouter(connect(mapStateToProps)(Logout));
