@@ -13,7 +13,7 @@ export class Dashboard extends React.Component {
   populate(){
     return this.props.history.map(i =>{
       console.log(i);
-      return (<div className='float-right'>
+      return (<div className='flex-right-dash'>
         <h3>{i.untranslated} - {i.phonetic}</h3>
         <p>Number of times correct: {i.correct} and incorrect {i.incorrect}.</p>
       </div>);
@@ -24,7 +24,7 @@ export class Dashboard extends React.Component {
     if(!this.props.loading){
       return (
         <div className='dashboard'>
-          <div className='float-left'>
+          <div className='flex-left-dash'>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
               Morbi rhoncus orci id sem varius, sit amet pulvinar magna 
               vehicula. Nunc in molestie nisi, non euismod nibh. Nullam 
@@ -34,7 +34,7 @@ export class Dashboard extends React.Component {
               Aliquam aliquet mollis felis, volutpat euismod dolor.
             </p>
           </div>
-          <div className='float-right'>
+          <div className='flex-right-dash'>
             {this.populate()}
           </div>
         </div>

@@ -7,7 +7,7 @@
   overflow: auto;
 }
 
-.float-left{
+.flex-left-dash{
   width: 44%;
   background: white;
   /* border-top: 20px solid black; */
@@ -16,7 +16,7 @@
   padding: 20px;
 }
 
-.float-right{
+.flex-right-dash{
   width: 92%;
   background: white;
   /* border-top: 20px solid black; */
