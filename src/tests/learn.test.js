@@ -1,3 +1,4 @@
+/* global $ expect jest */
 import React from 'react';
 import  {Learn} from '../components/learn';
 import {shallow} from 'enzyme';

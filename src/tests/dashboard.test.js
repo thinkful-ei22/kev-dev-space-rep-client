@@ -1,15 +1,7 @@
+/* global $ expect jest */
 import React from 'react';
 import  {Dashboard} from '../components/dashboard';
 import {shallow} from 'enzyme';
-// const shallowWithStore = (component, username, name, loading, history) => {
-//   const props = {
-//     username,
-//     name,
-//     loading,
-//     history
-//   };
-//   return shallow(component, {props});
-// };
 
 describe('<Dashboard/>', () => {
   it('should render without crashing', () => {
