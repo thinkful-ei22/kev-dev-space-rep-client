@@ -4,18 +4,18 @@ import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
 
 export const REGISTER_ERROR = 'REGISTER_ERROR';
-const registerErr = err => ({
+export const registerErr = err => ({
   type: REGISTER_ERROR,
   err
 });
 
 export const FETCH_HISTORY_REQUEST = 'FETCH_HISTORY_REQUEST';
-const fetchHistoryRequest = () => ({
+export const fetchHistoryRequest = () => ({
   type: FETCH_HISTORY_REQUEST
 });
 
 export const FETCH_HISTORY_SUCCESS = 'FETCH_HISTORY_SUCCESS';
-const fetchHistorySuccess = history => ({
+export const fetchHistorySuccess = history => ({
   type: FETCH_HISTORY_SUCCESS,
   history
 });

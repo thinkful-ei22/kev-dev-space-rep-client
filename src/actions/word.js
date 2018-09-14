@@ -1,18 +1,18 @@
 import {API_BASE_URL} from '../config';
 
 export const WORD_REQUEST = 'WORD_REQUEST';
-const wordRequest = () => ({
+export const wordRequest = () => ({
   type: WORD_REQUEST
 });
 
 export const WORD_SUCCESS = 'WORD_SUCCESS';
-const wordSuccess = word => ({
+export const wordSuccess = word => ({
   type: WORD_SUCCESS,
   word
 });
 
 export const WORD_VALIDATION = 'WORD_VALIDATION';
-const wordValidate = (isCorrect, answer) => ({
+export const wordValidate = (isCorrect, answer) => ({
   type: WORD_VALIDATION,
   isCorrect, 
   answer
@@ -21,18 +21,18 @@ const wordValidate = (isCorrect, answer) => ({
 export const resetProgress = () => (dispatch, getState) =>{
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/progress/reset`,
-  {
-    method: 'PUT',
-    headers: {
+    {
+      method: 'PUT',
+      headers: {
       // Provide our auth token as credentials
-      'content-type': 'application/json',
-      Authorization: `Bearer ${authToken}`
-    }
-  })
-  .then(() =>{
-    dispatch(wordRequest());
-    dispatch(fetchWord());
-  });
+        'content-type': 'application/json',
+        Authorization: `Bearer ${authToken}`
+      }
+    })
+    .then(() =>{
+      dispatch(wordRequest());
+      dispatch(fetchWord());
+    });
 
 };
 
