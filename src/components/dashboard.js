@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 // import {fetchProtectedData} from '../actions/protected-data';
-import {fetchProgress} from '../actions/users';
+import {fetchProgress, resetProgress} from '../actions/users';
 import './style/dashboard.css';
 
 export class Dashboard extends React.Component {
@@ -19,7 +19,7 @@ export class Dashboard extends React.Component {
     });
 
     const totalGuesses = correct + incorrect;
-    const accuracy = totalGuesses > 0 ? correct/totalGuesses*100 + '%' : 'n/a';
+    const accuracy = totalGuesses > 0 ? (correct/totalGuesses*100).toFixed(1) + '%' : 'n/a';
     return (
       [
         <p key="total">Total Guesses: {totalGuesses}</p>,
@@ -32,17 +32,26 @@ export class Dashboard extends React.Component {
     return this.props.history.map(i =>{
       console.log(i);
       const guessCount = i.correct + i.incorrect;
+      const accuracy = guessCount > 0 
+        ? (i.correct/guessCount*100).toFixed(1) + '%' : 'n/a';
       return (<div className='word-progress-element'>
         <h3>{i.untranslated} - {i.phonetic}</h3>
         <p>Correct: {i.correct}</p> 
         <p>Incorrect: {i.incorrect}</p>
-        <p>Accuracy: {
-          guessCount > 0
-            ? i.correct/guessCount*100 + '%'
-            : 'n/a'
-        }</p>
+        <p>Accuracy: {accuracy}</p>
       </div>);
     });
+  }
+
+  resetButton(){
+    return (
+      <button onClick={()=>{
+        this.props.dispatch(resetProgress());
+        // this.props.dispatch(fetchProgress());
+      }}>
+        Reset Progress
+      </button>
+    );
   }
 
   render() {
@@ -57,6 +66,9 @@ export class Dashboard extends React.Component {
             <div className="progress">
               <div className="total-progress">
                 {this.populateTotal()}
+              </div>
+              <div className="reset-progress">
+                {this.resetButton()}
               </div>
               <div className="word-progress">
                 {this.populateWords()}

@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
 // import {fetchProtectedData} from '../actions/protected-data';
-import {fetchWord, answerWord, resetProgress} from '../actions/word';
+import {fetchWord, answerWord} from '../actions/word';
 import './style/learn.css';
 
 export class Learn extends React.Component {
@@ -22,7 +22,7 @@ export class Learn extends React.Component {
     if(this.state.localAns && this.props.word){
      
       const feedback = this.props.isCorrect ? 'Correct!' : 'Incorrect. Try another!' ;
-    
+      console.log('PROPS:', this.props);
       return(
         <div>
           <p>{feedback}</p>
@@ -54,14 +54,6 @@ export class Learn extends React.Component {
           value='Next'>
         </input>
       </div>
-    );
-  }
-
-  resetButton(){
-    return (
-      <button onClick={()=>this.props.dispatch(resetProgress())}>
-        Reset Progress
-      </button>
     );
   }
 
@@ -100,9 +92,6 @@ export class Learn extends React.Component {
             />
           </form>
           {this.validateAnswer()}
-          <br/>
-          <br/>
-          {this.resetButton()}
         </div>);
     }
     else if(this.props.loading === true){

@@ -20,6 +20,27 @@ const fetchHistorySuccess = history => ({
   history
 });
 
+export const resetProgress = () => (dispatch, getState) =>{
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/progress/reset`,
+  {
+    method: 'PUT',
+    headers: {
+      // Provide our auth token as credentials
+      'content-type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+  .then(res =>{
+    dispatch(fetchProgress());
+  })
+  .catch(err =>{
+    //TODO: More here
+    console.error('Error resetting progress: ', err);
+  });
+
+};
+
 export const fetchProgress = () => (dispatch, getState) => {
   dispatch(fetchHistoryRequest());
 
