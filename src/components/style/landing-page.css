@@ -1,19 +1,11 @@
-.home{
-  display: flex;
-  background: white;
-  /* border-top: 20px solid black; */
-  max-width: 1400px;
-  max-height: cover;
-  margin: auto;
-  flex-wrap: wrap;
-}
+
 
 h2 {
   height: 50px;
   display: block;
   margin-top: 0px;
   padding-top: 20px;
-  justify-content: center;
+  
 }
 
 .login-label {
@@ -27,22 +19,22 @@ h2 {
 
 .flex-left-land{
   display: inline-block;
-  width: 44%;
-  background: white;
+  /* width: 44%; */
+  /* background: white; */
   /* border-top: 20px solid black; */
-  text-align: left;
+  /* text-align: left; */
   /* display: inline-grid; */
-  padding: 20px;
-  justify-content: left;
+  /* padding: 20px; */
+  /* justify-content: left; */
 }
 
 .flex-right-land{
   display: inline-block;
-  width: 30%;
-  background: white;
+  /* width: 30%; */
+  /* background: white; */
   /* border-top: 20px solid black; */
-  text-align: center;
-  justify-content: right;
+  /* text-align: center; */
+  /* justify-content: right; */
 }
 
 .web-h2-title{
