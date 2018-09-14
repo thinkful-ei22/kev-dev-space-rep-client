@@ -10,7 +10,8 @@ export class Learn extends React.Component {
     super(props);
     this.state = {
       localAns: null,
-      toggleBox: false
+      toggleBox: false,
+      loadedOnce: false
     };
   }
 
@@ -25,7 +26,7 @@ export class Learn extends React.Component {
       const feedback = this.props.isCorrect ? 'Correct!' : 'Incorrect. Try another!' ;
       console.log('PROPS:', this.props);
       return(
-        <div className="feedback">
+        <div className="feedback" aria-live="polite" aria-atomic="true">
           <p className={`answer ${responseClass}`}>{feedback}</p>
           <p>This word translates to: {this.props.word.translation.join(' / ')}.</p>
           {this.props.isCorrect ? '' : 'Your answer was: ' + this.state.localAns}
@@ -61,49 +62,62 @@ export class Learn extends React.Component {
 
   render() {
     const toggleInputBox = this.state.toggleBox ? 'none' : 'block';
-    if(!this.props.loading){
-      return (
-        <div className='learn-box'>
-          <h2>LEARN</h2>
-          <h3>Your word is...</h3>
-          <h4>{this.props.word.untranslated}</h4>
-          <p>({this.props.word.phonetic})</p>
-          <form 
-            className='answerForm'
-            style={{display: `${toggleInputBox}` }}
-            onSubmit={e => {
-              e.preventDefault();
-              this.setState({
-                localAns: e.target.answer.value,
-                toggleBox: true
-              });
-              this.props.dispatch(answerWord(this.props.word.wordId, e.target.answer.value));
-            }}>
-            <input 
-              type='text'
-              id='answerBox'
-              name='answer'
-              placeholder='Input answer here'
-              required
-            />
-            <input 
-              type='submit' 
-              id='answerButton' 
-              className='answerButton' 
-              name='button' 
-              value='Submit'
-            />
-          </form>
-          {this.validateAnswer()}
-        </div>);
+    const display = this.props.loading;
+    const loading = !this.props.loading;
+    
+    if(!this.props.loading && !this.state.loadedOnce){
+      console.log(this.state.loadedOnce);
+      this.setState({loadedOnce: true});
     }
-    else if(this.props.loading === true){
-      return(
-        <div>
+    console.log('but maybe...');
+    if(this.props.loading && !this.state.loadedOnce){
+      console.log('oh no');
+      return (
+        <div className="loading" hidden={loading}>
           <p>LOADING....</p>
         </div>
       );
     }
+    
+    return [<div className='learn-box' hidden={display}>
+        <h2>LEARN</h2>
+        <h3>Your word is...</h3>
+        <h4>{this.props.word.untranslated}</h4>
+        <p aria-live="polite">({this.props.word.phonetic})</p>
+        <form 
+          className='answerForm'
+          style={{display: `${toggleInputBox}` }}
+          onSubmit={e => {
+            e.preventDefault();
+            this.setState({
+              localAns: e.target.answer.value,
+              toggleBox: true
+            });
+            this.props.dispatch(answerWord(this.props.word.wordId, e.target.answer.value));
+            document.getElementById('answer-box').value = '';
+          }}>
+          <input 
+            type='text'
+            id='answer-box'
+            name='answer'
+            placeholder='Input answer here'
+            required
+          />
+          <input 
+            type='submit' 
+            id='answerButton' 
+            className='answerButton' 
+            name='button' 
+            value='Submit'
+          />
+        </form>
+        {this.validateAnswer()}
+      </div>,
+      <div className="loading" hidden={loading}>
+        <p>LOADING....</p>
+      </div>];
+    
+    
   }
 }
 
