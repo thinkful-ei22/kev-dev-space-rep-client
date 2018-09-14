@@ -1,5 +1,6 @@
 body{
   background: white;
+  box-sizing: border-box;
   height: 100%;
   width: 100%;
   background-image: 
@@ -11,17 +12,25 @@ body{
 
 
 .app{
-  
   text-align: center;
   margin: auto;
-  /* border-top: 3px solid black; */
-  /* border-bottom: 3px solid black; */
   font-family: 'Julius Sans One', sans-serif;
   height: 100%;
   width: 100%;
-  
-  /* Center and scale the image nicely */
-  
+}
+
+.app-content{
+  max-width: 900px;
+  min-width: 400px;
+  padding: 40px;
+  padding-top: 0;
+  margin: auto;
+}
+
+.app-content-box{
+  background: white;
+  width: 100%;
+  padding: .1px;
 }
 
 p {

@@ -1,6 +1,7 @@
 .login-form{
   display: inline-flex;
   padding: 0px;
+  flex-wrap: wrap;
 }
 
 .login-form-e{
@@ -17,11 +18,8 @@
   align-self: flex-end;
 }
 
-/* .form-input{
-  display: flex;
+@media(max-width: 600px){
+  .login-form{
+    flex-direction: column;
+  }
 }
-
-.form-input *{
-  display: inline-block;
-  align-self: center;
-} */

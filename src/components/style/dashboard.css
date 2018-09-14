@@ -1,24 +1,20 @@
 .dashboard{
-  /* display: flex; */
-  background: white;
-  /* border-top: 20px solid black; */
-  max-width: 1400px;
-  margin: auto;
-  overflow: auto;
-}
-
-.flex-left-dash{
-  width: 44%;
-  background: white;
-  /* border-top: 20px solid black; */
-  text-align: left;
-  /* display: inline-grid; */
   padding: 20px;
 }
 
-.flex-right-dash{
-  width: 92%;
-  background: white;
-  /* border-top: 20px solid black; */
-  text-align: right;
+
+.word-progress{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.word-progress-element{
+  padding: 10px;
+  flex-grow: 1;
+}
+
+
+.progress p{
+  margin: 5px 0;
 }

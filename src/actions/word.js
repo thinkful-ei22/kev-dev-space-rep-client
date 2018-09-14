@@ -18,24 +18,6 @@ export const wordValidate = (isCorrect, answer) => ({
   answer
 });
 
-export const resetProgress = () => (dispatch, getState) =>{
-  const authToken = getState().auth.authToken;
-  return fetch(`${API_BASE_URL}/progress/reset`,
-    {
-      method: 'PUT',
-      headers: {
-      // Provide our auth token as credentials
-        'content-type': 'application/json',
-        Authorization: `Bearer ${authToken}`
-      }
-    })
-    .then(() =>{
-      dispatch(wordRequest());
-      dispatch(fetchWord());
-    });
-
-};
-
 export const fetchWord = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   dispatch(wordRequest());
@@ -48,13 +30,11 @@ export const fetchWord = () => (dispatch, getState) => {
       }
     })
     .then(res => {
-      console.log(res);
       return res.json();
     }).then(res => {
-      console.log(res);
       dispatch(wordSuccess(res));
     }).catch(e => {
-      console.log(e);
+      console.error(e);
     });
 };
 

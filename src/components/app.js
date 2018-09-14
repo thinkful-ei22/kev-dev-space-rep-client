@@ -16,14 +16,11 @@ import './style/app.css';
 export class App extends React.Component {
   componentDidUpdate(prevProps) {
     const currRoute = this.props.location.pathname;
-    console.log(currRoute);
     if (!prevProps.loggedIn && this.props.loggedIn && currRoute !== '/logout') {
-      console.log('yo');
       // When we are logged in, refresh the auth token periodically
       this.startPeriodicRefresh();
     } else if (prevProps.loggedIn && !this.props.loggedIn || currRoute === '/logout') {
       // Stop refreshing when we log out
-      console.log('help');
       this.stopPeriodicRefresh();
     }
   }
@@ -51,12 +48,16 @@ export class App extends React.Component {
     return (
       <div className="app">
         <HeaderBar />
-        <Route exact path="/" component={LandingPage} />
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/learn" component={Learn} />
-        <Route exact path="/register" component={RegistrationPage} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/logout" component={Logout} />
+        <div className="app-content">
+          <div className="app-content-box">
+            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/learn" component={Learn} />
+            <Route exact path="/register" component={RegistrationPage} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/logout" component={Logout} />
+          </div>  
+        </div>
       </div>
     );
   }

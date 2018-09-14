@@ -16,7 +16,7 @@ export class HeaderBar extends React.Component {
     // Only render the log out button if we are logged in
     
     let navButtons = this.props.loggedIn
-      ? [ <a className='homeNav' href="/" key="home">Home</a>,
+      ? [ <a className='homeNav' href="/" key="home">Progress</a>,
         <a className='learnNav' href='/learn' key="learn">Learn</a>]
       : <a className='homeNav' href="/">Home</a>;
     
