@@ -20,6 +20,8 @@ This is the Landing Page where all the users initially see. A short description 
 React and Redux are used on the front-end (with Create React-App and Buildpack for Heroku).
 NodeJS and as well as Mongoose and Express are used on the back-end with MongoDB as the database storage. 
 
+The the live version was published to Heroku - both client and server side.
+
 NPM Modules used are:
 
   * Front-end
@@ -46,5 +48,3 @@ NPM Modules used are:
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-Below you will find some information on how to perform common tasks.<br>
-You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
