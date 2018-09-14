@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Route, withRouter} from 'react-router-dom';
+import {Route, withRouter, Switch} from 'react-router-dom';
 
 import HeaderBar from './header-bar';
 import LandingPage from './landing-page';
@@ -54,12 +54,14 @@ export class App extends React.Component {
         <HeaderBar />
         <div className={`app-content ${shrink}`}>
           <div className="app-content-box">
-            <Route exact path="/" component={LandingPage} />
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/learn" component={Learn} />
-            <Route exact path="/register" component={RegistrationPage} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/logout" component={Logout} />
+            <Switch>
+              <Route exact path="/" component={LandingPage} />
+              <Route exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/learn" component={Learn} />
+              <Route exact path="/register" component={RegistrationPage} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/logout" component={Logout} />
+            </Switch>
           </div>  
         </div>
       </div>
