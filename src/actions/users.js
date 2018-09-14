@@ -3,10 +3,10 @@ import {SubmissionError} from 'redux-form';
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
 
-export const REGISTER_ERROR = 'REGISTER_ERROR';
-export const registerErr = err => ({
-  type: REGISTER_ERROR,
-  err
+export const REGISTER_MESSAGE = 'REGISTER_MESSAGE';
+export const registerMessage = message => ({
+  type: REGISTER_MESSAGE,
+  message
 });
 
 export const FETCH_HISTORY_REQUEST = 'FETCH_HISTORY_REQUEST';
@@ -73,10 +73,16 @@ export const registerUser = user => dispatch => {
     body: JSON.stringify(user)
   })
     .then(res => normalizeResponseErrors(res))
-    .then(res => res.json())
+    .then(res => {
+      console.log('res', res);
+      if(res.ok){
+        dispatch(registerMessage('Registration Successful'));
+      }
+      res.json();
+    })
     .catch(err => {
       const {reason, message, location} = err;
-      dispatch(registerErr(message));
+      dispatch(registerMessage(message));
       if (reason === 'ValidationError') {
         // Convert ValidationErrors into SubmissionErrors for Redux Form
         return Promise.reject(

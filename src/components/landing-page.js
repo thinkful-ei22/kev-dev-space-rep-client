@@ -26,7 +26,7 @@ export class LandingPage extends React.Component{
         <RegistrationForm key="form"
           regSuccess={() => this.setState({isLoginShowing: true})}
         />
-        <p>{this.props.err}</p>,
+        <span className="form-container--message">{this.props.message}</span>,
       </div>
     );
 
@@ -54,7 +54,7 @@ export class LandingPage extends React.Component{
 
 const mapStateToProps = state => ({
   loggedIn: state.auth.currentUser !== null,
-  err: state.user.error
+  message: state.user.message
 });
 
 export default connect(mapStateToProps)(LandingPage);

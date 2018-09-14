@@ -1,5 +1,5 @@
 import {
-  REGISTER_ERROR,
+  REGISTER_MESSAGE,
   FETCH_HISTORY_REQUEST,
   FETCH_HISTORY_SUCCESS
 } from '../actions/users';
@@ -7,13 +7,14 @@ import {
 const initialState = {
   history: null,
   isLoading: true,
-  error: null,
+  message: null,
 };
 
 export default function userReducer (state = initialState, action){
-  if(action.type === REGISTER_ERROR){
+  if(action.type === REGISTER_MESSAGE){
+    console.log('message!', action.message);
     return Object.assign({}, state, {
-      error: action.err
+      message: action.message
     });
   }
   else if(action.type === FETCH_HISTORY_REQUEST){

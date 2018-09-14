@@ -24,3 +24,7 @@
 .landing-content-right{
   padding: 10px;
 }
+
+.form-container{
+  max-width: 180px;
+}
