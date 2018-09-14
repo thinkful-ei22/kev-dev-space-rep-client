@@ -45,10 +45,14 @@ export class App extends React.Component {
   }
 
   render() {
+    const shrink = 
+      this.props.location.pathname === '/learn'
+        ? 'app-content-shrink'
+        : '';
     return (
       <div className="app">
         <HeaderBar />
-        <div className="app-content">
+        <div className={`app-content ${shrink}`}>
           <div className="app-content-box">
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/dashboard" component={Dashboard} />

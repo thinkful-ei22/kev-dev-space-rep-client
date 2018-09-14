@@ -4,6 +4,8 @@ import {
   logout
 } from '../actions/auth';
 
+import './style/logout.css';
+
 export class Logout extends React.Component{
   componentWillMount(prevProps){
     this.props.dispatch(logout());
@@ -17,13 +19,10 @@ export class Logout extends React.Component{
   render(){
     const message = this.props.loggedIn || this.props.hasAuthToken
       ? <p>Logging out...</p>
-      : <p>Logged out. Thank you for using --SITENAME--!</p>;
+      : <p>Logged out. Thank you for using Sakura Learning!</p>;
 
     return(
-      <div className="logoutBox" style={{background: 'white',
-        /* border-top: 20px solid black; */
-        maxWidth: '1200px',
-        margin: 'auto'}}>
+      <div className="logout-box">
         {message}
       </div>
     );

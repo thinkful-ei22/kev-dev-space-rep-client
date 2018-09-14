@@ -7,18 +7,20 @@
 
 .landing{
   padding-top: 20px;
+
 }
 
 .landing h2{
   margin: 0;
+  margin-bottom: 20px;
 
 }
 
 .landing-content-left{
-  max-width: 500px;
+  max-width: 450px;
+  min-width: 300px;
   padding: 10px;
 }
-.landing-content-left{
-  min-width: 300px;
+.landing-content-right{
   padding: 10px;
 }

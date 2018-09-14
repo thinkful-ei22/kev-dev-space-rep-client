@@ -31,6 +31,15 @@ body{
   background: white;
   width: 100%;
   padding: .1px;
+  border: 2px solid black;
+  border-top: none;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  box-shadow: 10px 10px 20px 5px rgba(0,0,0,0.5);
+}
+
+.app-content-shrink{
+  max-width: 500px !important;
 }
 
 p {

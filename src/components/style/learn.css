@@ -1,6 +1,27 @@
-.learnBox {
-  color: black;
-  background-color: white;
-  max-width: 1400px;
-  margin:auto;
+.learn-box {
+  padding: 30px;
 }
+
+.learn-box h3{
+
+}
+
+.learn-box h4{
+  font-size: 3em;
+  margin: 0;
+}
+
+
+.answer{
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.correct{
+  color: darkgreen;
+}
+
+.incorrect{
+  color: darkred;
+}
+

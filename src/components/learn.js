@@ -21,13 +21,15 @@ export class Learn extends React.Component {
   validateAnswer(){
     if(this.state.localAns && this.props.word){
      
+      const responseClass = this.props.isCorrect ? 'correct' : 'incorrect';
       const feedback = this.props.isCorrect ? 'Correct!' : 'Incorrect. Try another!' ;
       console.log('PROPS:', this.props);
       return(
-        <div>
-          <p>{feedback}</p>
-          <p>This word translates to: {this.props.answer.join(' / ')}.</p>
+        <div className="feedback">
+          <p className={`answer ${responseClass}`}>{feedback}</p>
+          <p>This word translates to: {this.props.word.translation.join(' / ')}.</p>
           {this.props.isCorrect ? '' : 'Your answer was: ' + this.state.localAns}
+          <br/>
           {this.nextButton()}
         </div>
       );
@@ -61,11 +63,11 @@ export class Learn extends React.Component {
     const toggleInputBox = this.state.toggleBox ? 'none' : 'block';
     if(!this.props.loading){
       return (
-        <div className='learnBox'>
+        <div className='learn-box'>
           <h2>LEARN</h2>
-          <h1>Your word is...</h1>
-          <h2>{this.props.word.untranslated}</h2>
-          <h3>({this.props.word.phonetic})</h3>
+          <h3>Your word is...</h3>
+          <h4>{this.props.word.untranslated}</h4>
+          <p>({this.props.word.phonetic})</p>
           <form 
             className='answerForm'
             style={{display: `${toggleInputBox}` }}
@@ -81,7 +83,8 @@ export class Learn extends React.Component {
               type='text'
               id='answerBox'
               name='answer'
-              placeholder='Enter in an answer'
+              placeholder='Input answer here'
+              required
             />
             <input 
               type='submit' 

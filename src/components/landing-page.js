@@ -32,15 +32,16 @@ export class LandingPage extends React.Component{
 
     return (
       <div className="landing">
-        <h2>Welcome to --SITENAME--!</h2>
+        <h2>Welcome to Sakura Learning!</h2>
         
         <div className="landing-content">
           <div className='landing-content-left'>
             <p>Ever wanted to learn Japanese? Now you can! 
-            --SITENAME-- allows you to learn new languages with easy-to-use 
-            flashcard exercises! To get started, please login or register!</p>
+            Sakura Learning allows you to learn Japanese with easy-to-use 
+            flashcard exercises! To get started, please login or register.</p>
           </div>
           <div className='landing-content-right'>
+            <h3>Register</h3>
             {currentForm}
           </div>
         </div>

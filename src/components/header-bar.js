@@ -21,7 +21,7 @@ export class HeaderBar extends React.Component {
       : <a className='homeNav' href="/">Home</a>;
     
     let loginLogout = this.props.loggedIn
-      ? [ <span className="userName" key="name">{this.props.user.name} </span>,
+      ? [ <span className="userName" key="name">{'Hello, ' + this.props.user.name} </span>,
         <a href="/logout" key="logout">Logout</a>]
       : <LoginForm />;
 
@@ -29,7 +29,7 @@ export class HeaderBar extends React.Component {
     return (
       <div className="header-bar">
         <div className='titleBox'>
-          <h1 className='site-title'>--SITENAME--</h1>
+          <h1 className='site-title'>Sakura Learning</h1>
         </div>
 
         <nav className='nav-box'>
