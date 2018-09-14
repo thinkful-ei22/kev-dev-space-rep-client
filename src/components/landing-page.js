@@ -32,16 +32,16 @@ export class LandingPage extends React.Component{
     );
 
     return (
-      <div className="home">
+      <div className="landing">
         <h2>Welcome to --SITENAME--!</h2>
         
         <div className="landing-content">
-          <div className='flex-left-land'>
+          <div className='landing-content-left'>
             <p>Ever wanted to learn Japanese? Now you can! 
             --SITENAME-- allows you to learn new languages with easy-to-use 
             flashcard exercises! To get started, please login or register!</p>
           </div>
-          <div className='flex-right-land'>
+          <div className='landing-content-right'>
             {currentForm}
           </div>
         </div>
