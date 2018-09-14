@@ -2,8 +2,16 @@
 .landing-content{
   display: inline-flex;
   justify-content: space-evenly;
-  padding: 0 20px;
   flex-wrap: wrap;
+}
+
+.landing{
+  padding-top: 20px;
+}
+
+.landing h2{
+  margin: 0;
+
 }
 
 .landing-content-left{

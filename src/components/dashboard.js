@@ -10,12 +10,37 @@ export class Dashboard extends React.Component {
     this.props.dispatch(fetchProgress());
   }
   
-  populate(){
+  populateTotal(){
+    let correct = 0;
+    let incorrect = 0;
+    this.props.history.forEach(i =>{
+      correct += i.correct;
+      incorrect += i.incorrect;
+    });
+
+    const totalGuesses = correct + incorrect;
+    const accuracy = totalGuesses > 0 ? correct/totalGuesses*100 + '%' : 'n/a';
+    return (
+      [
+        <p key="total">Total Guesses: {totalGuesses}</p>,
+        <p key="accuracy">Total Accuracy: {accuracy}</p>
+      ]
+    );
+  }
+
+  populateWords(){
     return this.props.history.map(i =>{
       console.log(i);
-      return (<div className='flex-right-dash'>
+      const guessCount = i.correct + i.incorrect;
+      return (<div className='word-progress-element'>
         <h3>{i.untranslated} - {i.phonetic}</h3>
-        <p>Number of times correct: {i.correct} and incorrect {i.incorrect}.</p>
+        <p>Correct: {i.correct}</p> 
+        <p>Incorrect: {i.incorrect}</p>
+        <p>Accuracy: {
+          guessCount > 0
+            ? i.correct/guessCount*100 + '%'
+            : 'n/a'
+        }</p>
       </div>);
     });
   }
@@ -24,18 +49,19 @@ export class Dashboard extends React.Component {
     if(!this.props.loading){
       return (
         <div className='dashboard'>
-          <div className='flex-left-dash'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-              Morbi rhoncus orci id sem varius, sit amet pulvinar magna 
-              vehicula. Nunc in molestie nisi, non euismod nibh. Nullam 
-              gravida ex sed congue euismod. Integer ante ex, eleifend 
-              sit amet consectetur vitae, aliquam porta sem. Curabitur 
-              ultrices vehicula quam, ac luctus libero tincidunt ut. 
-              Aliquam aliquet mollis felis, volutpat euismod dolor.
+          <div className='dashboard-content'>
+            <h2>Progress</h2>
+            <p>
+              Welcome to the Progress Dashboard! You may track your progress here.
             </p>
-          </div>
-          <div className='flex-right-dash'>
-            {this.populate()}
+            <div className="progress">
+              <div className="total-progress">
+                {this.populateTotal()}
+              </div>
+              <div className="word-progress">
+                {this.populateWords()}
+              </div>
+            </div>  
           </div>
         </div>
       );

@@ -18,7 +18,7 @@
   justify-content: center;
   background: black;
   padding: 5px;
-  
+  flex-wrap: wrap;
 }
 
 .nav-box-element{
