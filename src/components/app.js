@@ -16,14 +16,11 @@ import './style/app.css';
 export class App extends React.Component {
   componentDidUpdate(prevProps) {
     const currRoute = this.props.location.pathname;
-    console.log(currRoute);
     if (!prevProps.loggedIn && this.props.loggedIn && currRoute !== '/logout') {
-      console.log('yo');
       // When we are logged in, refresh the auth token periodically
       this.startPeriodicRefresh();
     } else if (prevProps.loggedIn && !this.props.loggedIn || currRoute === '/logout') {
       // Stop refreshing when we log out
-      console.log('help');
       this.stopPeriodicRefresh();
     }
   }

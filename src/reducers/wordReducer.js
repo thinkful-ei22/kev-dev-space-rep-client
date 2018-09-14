@@ -19,7 +19,6 @@ export default function wordReducer (state=initialState, action){
       error: null
     });
   } else if(action.type === WORD_SUCCESS){
-    console.log(action.word);
     return Object.assign({}, state, {
       word: action.word,
       loading: false,

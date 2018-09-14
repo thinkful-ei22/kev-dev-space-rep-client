@@ -30,11 +30,10 @@ export class Dashboard extends React.Component {
 
   populateWords(){
     return this.props.history.map(i =>{
-      console.log(i);
       const guessCount = i.correct + i.incorrect;
       const accuracy = guessCount > 0 
         ? (i.correct/guessCount*100).toFixed(1) + '%' : 'n/a';
-      return (<div className='word-progress-element'>
+      return (<div className='word-progress-element' key={`word-${i.untranslated}`}>
         <h3>{i.untranslated} - {i.phonetic}</h3>
         <p>Correct: {i.correct}</p> 
         <p>Incorrect: {i.incorrect}</p>
@@ -47,7 +46,6 @@ export class Dashboard extends React.Component {
     return (
       <button onClick={()=>{
         this.props.dispatch(resetProgress());
-        // this.props.dispatch(fetchProgress());
       }}>
         Reset Progress
       </button>

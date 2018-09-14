@@ -30,13 +30,11 @@ export const fetchWord = () => (dispatch, getState) => {
       }
     })
     .then(res => {
-      console.log(res);
       return res.json();
     }).then(res => {
-      console.log(res);
       dispatch(wordSuccess(res));
     }).catch(e => {
-      console.log(e);
+      console.error(e);
     });
 };
 
