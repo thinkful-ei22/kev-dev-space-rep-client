@@ -45,6 +45,10 @@ NPM Modules used are:
     7. Passport-local
     8. Mongoose
     9. Morgan
+    
+The repo for the backend server may be found here:
+
+https://github.com/thinkful-ei22/kev-dev-spaced-rep-server
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
