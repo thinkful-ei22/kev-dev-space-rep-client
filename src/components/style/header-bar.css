@@ -1,3 +1,8 @@
+.header-bar{
+  display: inline-block;
+  width: 100%;
+}
+
 .site-title {
   font-size: 30px;
   text-align: center;
