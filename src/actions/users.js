@@ -74,7 +74,6 @@ export const registerUser = user => dispatch => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => {
-      console.log('res', res);
       if(res.ok){
         dispatch(registerMessage('Registration Successful'));
       }

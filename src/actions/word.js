@@ -41,14 +41,11 @@ export const fetchWord = () => (dispatch, getState) => {
 export const answerWord = (wordId, localAns) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   dispatch(wordRequest());
-  console.log(wordId, 'wordId');
   return fetch(`${API_BASE_URL}/words/${wordId}`)
     .then(res => {
-      console.log(res);
       return res.json();
     })
     .then(res => {
-      console.log(res, localAns);
       const arr = res.translation.filter(
         item => item.toLowerCase() === localAns.toLowerCase());
       let isCorrect;
@@ -73,8 +70,8 @@ export const answerWord = (wordId, localAns) => (dispatch, getState) => {
         });
     })
     .then(res => {
-      console.log(res);
+      // console.log(res);
     }).catch(e => {
-      console.log(e);
+      // console.log(e);
     });
 };

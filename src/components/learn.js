@@ -24,7 +24,6 @@ export class Learn extends React.Component {
      
       const responseClass = this.props.isCorrect ? 'correct' : 'incorrect';
       const feedback = this.props.isCorrect ? 'Correct!' : 'Incorrect. Try another!' ;
-      console.log('PROPS:', this.props);
       return(
         <div className="feedback" aria-live="polite" aria-atomic="true">
           <p className={`answer ${responseClass}`}>{feedback}</p>
@@ -66,12 +65,9 @@ export class Learn extends React.Component {
     const loading = !this.props.loading;
     
     if(!this.props.loading && !this.state.loadedOnce){
-      console.log(this.state.loadedOnce);
       this.setState({loadedOnce: true});
     }
-    console.log('but maybe...');
     if(this.props.loading && !this.state.loadedOnce){
-      console.log('oh no');
       return (
         <div className="loading" hidden={loading}>
           <p>LOADING....</p>

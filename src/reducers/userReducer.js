@@ -12,7 +12,6 @@ const initialState = {
 
 export default function userReducer (state = initialState, action){
   if(action.type === REGISTER_MESSAGE){
-    console.log('message!', action.message);
     return Object.assign({}, state, {
       message: action.message
     });
