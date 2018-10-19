@@ -13,10 +13,18 @@ All endpoints are protected via JWT authentication. As such, each user's experie
 
 Deployed Website: https://spaced-rep-client-dev.herokuapp.com/
 
-![Front Page](./screenshots/sakuraProj.png)
+## Screenshots
 
-This is the Landing Page where all the users initially see. A short description about the website is about and its intentions are stated. 
+![Learn](./screenshots/learn.png)
 
+The Learn page, where users learn the vocabulary.
+
+![Progress](./screenshots/progress.png)
+
+The Progress page, where users can track their performance.
+
+
+## Technology
 React and Redux are used on the front-end (with Create React-App and Buildpack for Heroku).
 NodeJS and as well as Mongoose and Express are used on the back-end with MongoDB as the database storage. 
 
