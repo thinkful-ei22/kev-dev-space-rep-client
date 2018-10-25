@@ -18,13 +18,30 @@
 
 .landing-content-left{
   max-width: 450px;
-  min-width: 300px;
   padding: 10px;
 }
 .landing-content-right{
   padding: 10px;
 }
 
-.form-container{
-  max-width: 180px;
+/* .form-container{
+  max-width: 230px;
+} */
+
+.registration-form input{
+  margin-bottom: 10px;
+  height: 2.5em;
+}
+
+@media(max-width: 650px){
+  .landing-content-right{
+    width: 100%;
+    max-width: 400px;
+  }
+  .registration-form,
+  .registration-form input{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
 }

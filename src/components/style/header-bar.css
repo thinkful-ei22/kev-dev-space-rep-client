@@ -16,6 +16,7 @@
 
 .homeNav {
   padding: 8px;
+  margin-right: 15px;
 }
 
 .nav-box {
@@ -39,4 +40,13 @@
 .nav-box-element a:hover,
 .nav-box-element a:active{
   color: white;
+}
+
+@media(max-width: 675px){
+  .mainNav,
+  .logNav{
+    padding: 15px;
+    margin: 0px auto;
+  }
+
 }

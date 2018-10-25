@@ -51,7 +51,7 @@ export class App extends React.Component {
     return (
       <div className="app">
         <HeaderBar />
-        <div className={`app-content ${shrink}`}>
+        <main className={`app-content ${shrink}`}>
           <div className="app-content-box">
             <Switch>
               <Route exact path="/" component={LandingPage} />
@@ -61,7 +61,7 @@ export class App extends React.Component {
               <Route exact path="/logout" component={Logout} />
             </Switch>
           </div>  
-        </div>
+        </main>
       </div>
     );
   }

@@ -18,8 +18,16 @@
   align-self: flex-end;
 }
 
-@media(max-width: 600px){
+@media(max-width: 650px){
   .login-form{
     flex-direction: column;
+  }
+
+  .login-form-e{
+    margin-bottom: 10px;
+  }
+
+  .login-form-e input{
+    height: 2em;
   }
 }
