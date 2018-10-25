@@ -11,12 +11,27 @@ Users can also view their past progress of correct and incorrect answers to othe
 
 All endpoints are protected via JWT authentication. As such, each user's experience is personalized.
 
-Deployed Website: https://spaced-rep-client-dev.herokuapp.com/
+## Live App
 
-![Front Page](./screenshots/sakuraProj.png)
+A live version of the site may be found here: https://spaced-rep-client-dev.herokuapp.com/
 
-This is the Landing Page where all the users initially see. A short description about the website is about and its intentions are stated. 
+```
+Username: demo
+password: demopassword
+```
 
+## Screenshots
+
+![Learn](./screenshots/learn.png)
+
+The Learn page, where users learn the vocabulary.
+
+![Progress](./screenshots/progress.png)
+
+The Progress page, where users can track their performance.
+
+
+## Technology
 React and Redux are used on the front-end (with Create React-App and Buildpack for Heroku).
 NodeJS and as well as Mongoose and Express are used on the back-end with MongoDB as the database storage. 
 
