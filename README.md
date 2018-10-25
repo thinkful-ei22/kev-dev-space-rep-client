@@ -11,7 +11,14 @@ Users can also view their past progress of correct and incorrect answers to othe
 
 All endpoints are protected via JWT authentication. As such, each user's experience is personalized.
 
-Deployed Website: https://spaced-rep-client-dev.herokuapp.com/
+## Live App
+
+A live version of the site may be found here: https://spaced-rep-client-dev.herokuapp.com/
+
+```
+Username: demo
+password: demopassword
+```
 
 ## Screenshots
 
