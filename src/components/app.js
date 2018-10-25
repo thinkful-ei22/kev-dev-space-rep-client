@@ -7,7 +7,6 @@ import LandingPage from './landing-page';
 import Dashboard from './dashboard';
 import RegistrationPage from './registration-page';
 import Learn from './learn';
-import Login from './login';
 import Logout from './logout';
 import {refreshAuthToken} from '../actions/auth';
 
@@ -19,7 +18,7 @@ export class App extends React.Component {
     if (!prevProps.loggedIn && this.props.loggedIn && currRoute !== '/logout') {
       // When we are logged in, refresh the auth token periodically
       this.startPeriodicRefresh();
-    } else if (prevProps.loggedIn && !this.props.loggedIn || currRoute === '/logout') {
+    } else if ((prevProps.loggedIn && !this.props.loggedIn) || currRoute === '/logout') {
       // Stop refreshing when we log out
       this.stopPeriodicRefresh();
     }
@@ -59,7 +58,6 @@ export class App extends React.Component {
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/learn" component={Learn} />
               <Route exact path="/register" component={RegistrationPage} />
-              <Route exact path="/login" component={Login} />
               <Route exact path="/logout" component={Logout} />
             </Switch>
           </div>  
