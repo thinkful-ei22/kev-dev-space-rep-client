@@ -41,7 +41,7 @@ export class Learn extends React.Component {
     }
     else {
       return(
-        <div></div>
+        <div className="feedback" aria-live="polite" aria-atomic="true"></div>
       );
     }
   }
@@ -66,17 +66,17 @@ export class Learn extends React.Component {
   render() {
     const toggleInputBox = this.state.toggleBox ? 'none' : 'block';
     const display = this.props.loading;
-    const hideForLoading = !this.props.loading;
     
     if(this.props.loading){
       return (
-        <div className="loading" hidden={hideForLoading}>
+        <section className="loading" >
           <p>LOADING....</p>
-        </div>
+        </section>
       );
     }
     
-    return [<div className='learn-box' hidden={display} key="learn-box">
+    return (
+      <section className='learn-box' hidden={display}>
         <h2>LEARN</h2>
         <h3>Your word is...</h3>
         <h4>{this.props.word.untranslated}</h4>
@@ -109,10 +109,8 @@ export class Learn extends React.Component {
           />
         </form>
         {this.validateAnswer()}
-      </div>,
-      <div className="loading" hidden={hideForLoading} key="loading">
-        <p>LOADING....</p>
-      </div>];
+      </section>
+    );
     
     
   }

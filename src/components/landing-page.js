@@ -33,15 +33,15 @@ export class LandingPage extends React.Component{
         <h2>Welcome to Sakura Learning!</h2>
         
         <div className="landing-content">
-          <div className='landing-content-left'>
+          <section className='landing-content-left'>
             <p>Ever wanted to learn Japanese? Now you can! 
             Sakura Learning allows you to learn Japanese with easy-to-use 
             flashcard exercises! To get started, please login or register.</p>
-          </div>
-          <div className='landing-content-right'>
+          </section>
+          <section className='landing-content-right'>
             <h3>Register</h3>
             {currentForm}
-          </div>
+          </section>
         </div>
 
       </div>

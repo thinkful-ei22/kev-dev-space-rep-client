@@ -56,7 +56,7 @@ export class Dashboard extends React.Component {
     if(!this.props.loading){
       return (
         <div className='dashboard'>
-          <div className='dashboard-content'>
+          <section className='dashboard-content'>
             <h2>Progress</h2>
             <p>
               Welcome to the Progress Dashboard! You may track your progress here.
@@ -72,7 +72,7 @@ export class Dashboard extends React.Component {
                 {this.populateWords()}
               </div>
             </div>  
-          </div>
+          </section>
         </div>
       );
     }
